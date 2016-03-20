@@ -20,7 +20,7 @@ public class Customer {
 		this.accountNumber = accountNumber;
 	}
 	public BigDecimal getTotalAmount() {
-		return totalAmount == null ? new BigDecimal(0) : totalAmount;
+		return totalAmount;
 	}
 	public void setTotalAmount(BigDecimal totalAmount) {
 		this.totalAmount = totalAmount;

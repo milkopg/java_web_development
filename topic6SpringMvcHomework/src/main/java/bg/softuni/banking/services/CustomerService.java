@@ -4,5 +4,4 @@ import bg.softuni.banking.entities.Customer;
 public interface CustomerService {
 	public boolean addCustomer (Customer customer);
 	public Customer getCustomer(String accountNumber);
-	public boolean updateCustomer(Customer customer);
 }

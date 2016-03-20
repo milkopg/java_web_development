@@ -13,7 +13,7 @@ public class CustomerServiceImpl implements CustomerService{
 	
 	@Override
 	public boolean addCustomer(Customer customer) {
-		customersMap.putIfAbsent(customer.getAccountNumber(), customer);
+		customersMap.put(customer.getAccountNumber(), customer);
 		return true;
 	}
 
@@ -23,15 +23,5 @@ public class CustomerServiceImpl implements CustomerService{
 			return customersMap.get(accountNumber);
 		}
 		return null;
-	}
-
-	@Override
-	public boolean updateCustomer(Customer customer) {
-		if (customer == null) return false;
-		if (customersMap.containsKey(customer.getAccountNumber())) {
-			customersMap.replace(customer.getAccountNumber(), customer);
-			return true;
-		}
-		return false;
 	}
 }

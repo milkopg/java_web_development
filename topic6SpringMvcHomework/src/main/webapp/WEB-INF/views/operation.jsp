@@ -5,9 +5,7 @@
 
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/styles.css" />"/>
 	<title>Web Banking Page</title>
-	
 </head>
 <body>
 <h1>
@@ -18,14 +16,14 @@
 	<table>
 		<tr>
 			<td>
-				<c:forEach  var="error" varStatus="errorStatus" items="${operation.errors}">
+				<c:forEach  var="error" varStatus="errorStatus" items="${operation.customer.errors}">
 					<p><c:out value="${error}"></c:out></p>
 				</c:forEach>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<c:out value="${sessionScope.activeCurrency}">${sessionScope.activeCurrency}</c:out>
+				<c:out value="${sessionScope.selected}">${sessionScope.selected}</c:out>
 				<select name="currencies">
 					<c:forEach items="${sessionScope.currencies}" var="currency">
 						 <option value="${currency.key}"  <c:if test="${sessionScope.selected == currency.key}">selected="selected"</c:if> >${currency.key} ${currency.value} </option>
@@ -44,18 +42,21 @@
 		<tr>
 			<td>Deposit/Withdraw</td>
 			<td>
-				<input type="radio" name="depositType" value="deposit" <c:if test="${operation.depositType == 'deposit'}">checked="checked"</c:if>>
-				<input type="radio" name="depositType" value="withdraw" <c:if test="${operation.depositType == 'withdraw'}">checked="checked"</c:if>>
+				<input type="radio" name="depositType" value="deposit">
+				<input type="radio" name="depositType" value="withdraw">
 			</td>
 		</tr>
 		<tr>
 			<td>Amount to change</td>
-			<td><input  type="text" id="amount" name="amount" value='${operation.amount}'></td>
+			<td><input  type="text" id="amount" name="amount" value='${operation.customer.amount}'></td>
 		</tr>
 		<tr>
 			<td>Total Amount</td>
 			<td><c:out value="${operation.customer.totalAmount}"></c:out>
 		</tr>
+		<tr> 
+			<td></td>
+			<td><input type="submit" value="Submit" style=""></td>
+		</tr>
 	</table>
-	<input type="submit" id = "btn1" name="Submit">
 </form:form>
